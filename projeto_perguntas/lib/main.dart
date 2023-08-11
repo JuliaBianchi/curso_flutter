@@ -12,7 +12,7 @@ class _PerguntaAppState extends State<PerguntaApp> {
     {
       'texto': 'Qual é a sua cor favorita?',
       'respostas': [
-        {'texto': 'Preto', 'pontuacao': 5},
+        {'texto': 'Preto', 'pontuacao': 10},
         {'texto': 'Rosa', 'pontuacao': 4},
         {'texto': 'Branco', 'pontuacao': 5},
         {'texto': 'Azul', 'pontuacao': 4},
@@ -21,19 +21,19 @@ class _PerguntaAppState extends State<PerguntaApp> {
     {
       'texto': 'Qual é o seu animal favorito?',
       'respostas': [
-        {'texto' : 'Pato', 'pontuacao' : 5},
-        {'texto' : 'Pinguim', 'pontuacao' : 4},
-        {'texto' : 'Giraffa', 'pontuacao' : 5},
-        {'texto' : 'Lontra', 'pontuacao' : 4},
+        {'texto': 'Pato', 'pontuacao': 5},
+        {'texto': 'Pinguim', 'pontuacao': 4},
+        {'texto': 'Giraffa', 'pontuacao': 5},
+        {'texto': 'Lontra', 'pontuacao': 4},
       ],
     },
     {
       'texto': 'Qual é o seu instrutor favorito?',
       'respostas': [
-        {'texto' : 'Leo', 'pontuacao' : 4},
-        {'texto' : 'Maria', 'pontuacao' : 7},
-        {'texto' : 'João', 'pontuacao' : 4},
-        {'texto' : 'Alice', 'pontuacao' : 5},
+        {'texto': 'Leo', 'pontuacao': 1},
+        {'texto': 'Maria', 'pontuacao': 7},
+        {'texto': 'João', 'pontuacao': 4},
+        {'texto': 'Alice', 'pontuacao': 5},
       ],
     },
   ];
@@ -55,17 +55,16 @@ class _PerguntaAppState extends State<PerguntaApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Perguntas'),
-        ),
-        body: temPerguntaSelecionada
-            ? Questionario(
-                perguntas: _perguntas,
-                perguntaSelecionada: _perguntaSelecionada,
-                quandoResponder: _responder)
-            : Resultado(),
-      ),
-    );
+          appBar: AppBar(
+            title: const Text('Perguntas'),
+          ),
+          body: temPerguntaSelecionada
+              ? Questionario(
+              perguntas: _perguntas,
+              perguntaSelecionada: _perguntaSelecionada,
+              quandoResponder: _responder)
+              : Resultado(_pontuacaoTotal),
+    ),);
   }
 }
 
