@@ -11,7 +11,7 @@ class ExpansesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final _transations = [
+  final _transactions = [
     Transaction(id: '1', title: 'Novo tênis de corrida', value: 420.00, date: DateTime.now()),
     Transaction(id: '2', title: 'Conta de luz', value: 215.56, date: DateTime.now()),
   ];
@@ -25,17 +25,21 @@ class MyHomePage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        //crossAxisAlignment: CrossAxisAlignment.center - por padrão fica no centro
-        children: <Widget> [
-          Container(
-            width: double.infinity,
+        children: [
+          const SizedBox(
             child: Card(
+              color: Colors.blue,
               child: Text('Gráfico'),
+              elevation: 5,
             ),
           ),
-          Card(
-            child: Text('Lista de Transações'),
-          )
+          Column(
+            children: _transactions.map((tr) {
+              return Card(
+                child: Text(tr.title),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
