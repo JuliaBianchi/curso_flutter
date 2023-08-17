@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 class TransactionForm extends StatefulWidget {
   final void Function(String, double, DateTime) onSubmit;
 
-  const TransactionForm(this.onSubmit);
+  const TransactionForm(this.onSubmit, {super.key});
 
   @override
   State<TransactionForm> createState() => _TransactionFormState();
@@ -13,7 +13,7 @@ class TransactionForm extends StatefulWidget {
 class _TransactionFormState extends State<TransactionForm> {
   final _titleController = TextEditingController();
   final _valueController = TextEditingController();
-  DateTime _selectedDate = DateTime.now();
+  DateTime? _selectedDate = DateTime.now();
 
   _submitForm() {
     final title = _titleController.text;
@@ -68,8 +68,8 @@ class _TransactionFormState extends State<TransactionForm> {
                 labelText: 'Valor(R\$)',
               ),
             ),
-            Container(
-              height: 80,
+            SizedBox(
+              height: 70,
               child: Row(
                 children: [
                    Expanded(
@@ -97,14 +97,14 @@ class _TransactionFormState extends State<TransactionForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 ElevatedButton(
-                  onPressed: _submitForm,
-                  child: const Text(
+                  child: Text(
                     'Nova Transação',
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  onPressed: _submitForm,
                 ),
               ],
             )

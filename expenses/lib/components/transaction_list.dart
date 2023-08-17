@@ -8,7 +8,6 @@ class TransactionList extends StatelessWidget {
 
   TransactionList(this.transactions, this.onRemove);
 
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -69,7 +68,7 @@ class TransactionList extends StatelessWidget {
                       icon: Icon(Icons.delete),
                       color: Theme.of(context).colorScheme.error,
                       onPressed: () => onRemove(tr.id),
-                    ) ,
+                    ),
                   ),
                 );
               },

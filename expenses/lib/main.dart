@@ -10,7 +10,6 @@ main() => runApp(ExpansesApp());
 class ExpansesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     final ThemeData tema = ThemeData();
 
     return MaterialApp(
@@ -34,7 +33,6 @@ class ExpansesApp extends StatelessWidget {
             fontSize: 20,
             fontWeight: FontWeight.bold,
           ),
-
         ),
       ),
     );
@@ -78,11 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
         context: context,
         builder: (_) {
           return TransactionForm(_addTransaction);
-        }
-    );
+        });
   }
 
-  _removeTransaction(String id){
+  _removeTransaction(String id) {
     setState(() {
       _transactions.removeWhere((tr) => tr.id == id);
     });
