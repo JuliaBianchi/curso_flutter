@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:expenses/components/chart.dart';
 import 'package:expenses/components/transaction_form.dart';
 import 'package:flutter/material.dart';
 import 'components/transaction_list.dart';
@@ -13,11 +14,11 @@ class ExpansesApp extends StatelessWidget {
     final ThemeData tema = ThemeData();
 
     return MaterialApp(
-        home: MyHomePage(),
+      home: MyHomePage(),
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.purple.shade700,
-          secondary: Colors.orange.shade700,
+          primary: Colors.purple.shade600,
+          secondary: Colors.orange.shade500,
         ),
         textTheme: tema.textTheme.copyWith(
           titleLarge: const TextStyle(
@@ -46,9 +47,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
-    //Transaction(id: '1', title: 'Conta de Agua', value: 200.00, date: DateTime.now()),
-    //Transaction(id: '2', title: 'Conta de luz', value: 215.56, date: DateTime.now()),
+    Transaction(id: 't0', title: 'Conta de Antiga', value: 211.30, date: DateTime.now().subtract(const Duration(days: 33)),),
+    Transaction(id: 't1', title: 'Conta Luz', value: 400.00, date: DateTime.now().subtract(const Duration(days: 3)),),
+    Transaction(id: 't2', title: 'Conta de Água', value: 211.30, date: DateTime.now().subtract(const Duration(days: 5)),),
+    Transaction(id: 't3', title: 'Conta de Internet', value: 100.00, date: DateTime.now()),
+    Transaction(id: 't4', title: 'Cartão', value: 500.30, date: DateTime.now()),
+
   ];
+
+  List<Transaction> get _recentTransactions {
+    return _transactions.where((tr) {
+      return tr.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
+    }).toList();
+  }
 
   _addTransaction(String title, double value) {
     final newTransaction = Transaction(
@@ -68,10 +81,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _openTransactionFormModal(BuildContext context) {
     showModalBottomSheet(
-      context: context,
-      builder: (_) {
-        return TransactionForm(_addTransaction);
-      });
+        context: context,
+        builder: (_) {
+          return TransactionForm(_addTransaction);
+        }
+    );
   }
 
   @override
@@ -83,19 +97,14 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () => _openTransactionFormModal(context),
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            const SizedBox(
-              child: Card(
-                child: Text('Gráfico'),
-                elevation: 5,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(_transactions),
           ],
         ),
