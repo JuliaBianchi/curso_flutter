@@ -128,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            if(isLandScape)
+              //if(isLandScape)
               // Row(
               //   mainAxisAlignment: MainAxisAlignment.center,
               //   children: [
