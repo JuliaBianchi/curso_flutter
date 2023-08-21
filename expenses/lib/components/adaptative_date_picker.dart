@@ -4,10 +4,8 @@ import 'package:intl/intl.dart';
 import 'dart:io';
 
 class AdaptativeDatePicker extends StatelessWidget {
-
   final DateTime? selectedDate;
   final Function(DateTime)? onDateChanged;
-
 
   AdaptativeDatePicker({
     this.selectedDate,
@@ -28,22 +26,19 @@ class AdaptativeDatePicker extends StatelessWidget {
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? Container(
-          height: 180,
-          child: CupertinoDatePicker(
-          mode: CupertinoDatePickerMode.date,
-          initialDateTime: DateTime.now(),
-          minimumDate: DateTime(2010),
-          maximumDate: DateTime.now(),
-          onDateTimeChanged: onDateChanged!,
-
-          ),
-        )
-
+            height: 180,
+            child: CupertinoDatePicker(
+              mode: CupertinoDatePickerMode.date,
+              initialDateTime: DateTime.now(),
+              minimumDate: DateTime(2010),
+              maximumDate: DateTime.now(),
+              onDateTimeChanged: onDateChanged!,
+            ),
+          )
         : SizedBox(
             height: 70,
             child: Row(
@@ -56,7 +51,7 @@ class AdaptativeDatePicker extends StatelessWidget {
                   ),
                 ),
                 TextButton(
-                  child: Text(
+                  child: const Text(
                     'Selecionar Data',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

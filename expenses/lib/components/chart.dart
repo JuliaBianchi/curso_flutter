@@ -35,9 +35,9 @@ class Chart extends StatelessWidget {
     }).reversed.toList();
   }
 
-  double get _weekTotalValue{
-    return groupedTransactions.fold(0.0, (sum, tr){
-      return sum +(tr['value'] as double);
+  double get _weekTotalValue {
+    return groupedTransactions.fold(0.0, (sum, tr) {
+      return sum + (tr['value'] as double);
     });
   }
 

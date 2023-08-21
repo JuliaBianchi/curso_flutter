@@ -47,19 +47,20 @@ class _TransactionFormState extends State<TransactionForm> {
                 label: 'Título',
                 controller: _titleController,
                 onSubmitted: (_) => _submitForm(),
-                ),
+              ),
 
               //valor da transação
               AdaptativeTextField(
                 label: 'Valor(R\$)',
                 controller: _valueController,
-                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                keyboardType:
+                    const TextInputType.numberWithOptions(decimal: true),
                 onSubmitted: (_) => _submitForm(),
-                ),
+              ),
 
               AdaptativeDatePicker(
                 selectedDate: _selectedDate,
-                onDateChanged: (newDate){
+                onDateChanged: (newDate) {
                   setState(() {
                     _selectedDate = newDate;
                   });
@@ -71,9 +72,7 @@ class _TransactionFormState extends State<TransactionForm> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   AdaptativeButton(
-                      label: 'Nova Transação',
-                      onPressed: _submitForm
-                  ),
+                      label: 'Nova Transação', onPressed: _submitForm),
                 ],
               )
             ],

@@ -7,20 +7,20 @@ class AdaptativeButton extends StatelessWidget {
   final Function() onPressed;
 
   const AdaptativeButton({
-     required this.label,
-     required this.onPressed,
+    required this.label,
+    required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return Platform.isIOS
         ? CupertinoButton(
-            child: Text(label),
             onPressed: onPressed,
             color: Theme.of(context).colorScheme.primary,
-            padding: EdgeInsets.symmetric(
+            padding: const EdgeInsets.symmetric(
               horizontal: 20,
             ),
+            child: Text(label),
           )
         : ElevatedButton(
             onPressed: onPressed,
