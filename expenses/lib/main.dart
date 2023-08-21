@@ -18,7 +18,7 @@ class ExpansesApp extends StatelessWidget {
       home: MyHomePage(),
       theme: tema.copyWith(
         colorScheme: tema.colorScheme.copyWith(
-          primary: Colors.purple.shade600,
+          primary: Colors.purple.shade400,
           secondary: Colors.orange.shade500,
         ),
         textTheme: tema.textTheme.copyWith(
@@ -27,6 +27,10 @@ class ExpansesApp extends StatelessWidget {
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Colors.black,
+          ),
+          labelLarge: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
           ),
         ),
         appBarTheme: const AppBarTheme(
