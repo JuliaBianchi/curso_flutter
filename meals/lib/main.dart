@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meals/screens/categories_screen.dart';
+import 'package:meals/screens/tabs_screen.dart';
 import 'package:meals/screens/category_meals_screen.dart';
 import 'package:meals/screens/meal_detail_screen.dart';
 import 'package:meals/utils/app_routes.dart';
@@ -17,14 +17,14 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Raleway',
         canvasColor: Colors.orange.shade50,
         textTheme: ThemeData.light().textTheme.copyWith(
-              titleLarge: TextStyle(
+              titleLarge: const TextStyle(
                 fontSize: 20,
                 fontFamily: 'RobotoCondensed',
               ),
             ),
       ),
       routes: {
-        AppRoutes.HOME: (ctx) => CategoriesScreen(),
+        AppRoutes.HOME: (ctx) => TabsScreen(),
         AppRoutes.CATEGORIES_MEALS: (ctx) => CategoryMealsScreen(),
         AppRoutes.MEAL_DETAIL: (ctx) => MealDetailScreen(),
       },
