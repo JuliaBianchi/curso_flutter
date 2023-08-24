@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../models/meals.dart';
 
 class MealDetailScreen extends StatelessWidget {
+  final Function(Meals) onToggleFavorite;
+  final bool Function(Meals) isFavorite;
+
+  const MealDetailScreen(this.onToggleFavorite, this.isFavorite);
 
   // criar o título da seção
   Widget _createSectionTitle(BuildContext context, String title) {
@@ -47,7 +51,6 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover, //ajustar a imagem
               ),
             ),
-
             _createSectionTitle(context, 'Ingredientes'),
             _createSectionContainer(
               // criar a lista de ingredientes da receita
@@ -61,33 +64,39 @@ class MealDetailScreen extends StatelessWidget {
                           vertical: 5,
                           horizontal: 10,
                         ),
-                        child: Text(meal.ingredients[index]),));
+                        child: Text(meal.ingredients[index]),
+                      ));
                 },
               ),
             ),
-
             _createSectionTitle(context, 'Passos'),
             _createSectionContainer(
               // listar os passos da receita
               ListView.builder(
-                  itemCount: meal.steps.length,
-                  itemBuilder: (ctx, index){
-                    return Column(
-                      children: [
-                        ListTile(
-                          leading: CircleAvatar(
-                            child: Text('${index + 1}'),
-                          ),
-                          title: Text(meal.steps[index]),
+                itemCount: meal.steps.length,
+                itemBuilder: (ctx, index) {
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          child: Text('${index + 1}'),
                         ),
-                        const Divider(),
-                      ],
-                    );
-                  },
+                        title: Text(meal.steps[index]),
+                      ),
+                      const Divider(),
+                    ],
+                  );
+                },
               ),
             ),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(isFavorite(meal) ? Icons.favorite : Icons.favorite_border),
+        onPressed: () {
+          onToggleFavorite(meal);
+        },
       ),
     );
   }

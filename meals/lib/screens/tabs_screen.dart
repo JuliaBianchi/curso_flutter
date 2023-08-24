@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:meals/screens/categories_screen.dart';
 import 'package:meals/screens/favorite_screen.dart';
-
 import '../components/main_drawer.dart';
+import '../models/meals.dart';
 
 class TabsScreen extends StatefulWidget {
-  const TabsScreen({super.key});
+  final List<Meals> favoriteMeals;
+
+  const TabsScreen(this.favoriteMeals);
 
   @override
   State<TabsScreen> createState() => _TabsScreenState();
@@ -14,10 +16,23 @@ class TabsScreen extends StatefulWidget {
 
 class _TabsScreenState extends State<TabsScreen> {
   int _selectedScreenIndex = 0;
-  final List<Map<String, Object>> _screens = [
-    {'title': 'Lista de Categorias', 'screen': CategoriesScreen()},
-    {'title': 'Meus Favoritos', 'screen': FavoriteScreen()},
-  ];
+
+  List<Map<String, Object>>? _screens;
+
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      {
+        'title': 'Lista de Categorias',
+        'screen': CategoriesScreen(),
+      },
+      {
+        'title': 'Meus Favoritos',
+        'screen': FavoriteScreen(widget.favoriteMeals),
+      },
+    ];
+  }
 
   _selectScreen(int index) {
     setState(() {
@@ -31,28 +46,27 @@ class _TabsScreenState extends State<TabsScreen> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text(_screens[_selectedScreenIndex]['title'] as String),
+          title: Text(_screens?[_selectedScreenIndex]['title'] as String),
         ),
         drawer: MainDrawer(),
-        body: _screens[_selectedScreenIndex]['screen'] as Widget,
+        body: _screens?[_selectedScreenIndex]['screen'] as Widget,
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectScreen,
           backgroundColor: Theme.of(context).primaryColor,
           unselectedItemColor: Colors.white,
           selectedItemColor: Theme.of(context).hintColor,
           currentIndex: _selectedScreenIndex,
-          items: [
+          items: const [
             BottomNavigationBarItem(
               icon: Icon(Icons.category),
               label: 'Categorias',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.favorite_border),
+              icon: Icon(Icons.favorite),
               label: 'Favoritos',
             ),
           ],
         ),
-
       ),
     );
   }
