@@ -12,7 +12,7 @@ class Cart with ChangeNotifier {
     return {..._items};
   }
 
-  int get itemsCount {
+  int get itemCount {
     return _items.length;
   }
 
