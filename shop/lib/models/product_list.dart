@@ -4,7 +4,7 @@ import 'package:shop/models/product.dart';
 
 class ProductList with ChangeNotifier{ // mixin
 
-  List<Product> _items = dummy_products;
+  final List<Product> _items = dummy_products;
   List<Product> get items => [..._items]; // fazer um clone da lista
 
   void addProduct(Product product){

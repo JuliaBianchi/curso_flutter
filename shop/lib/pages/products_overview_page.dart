@@ -1,14 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shop/components/product_item.dart';
-import 'package:shop/data/dummy_data.dart';
-import 'package:shop/models/product_list.dart';
-
 import '../components/product_grid.dart';
-import '../models/product.dart';
 
 class ProductsOverviewPage extends StatelessWidget {
-  ProductsOverviewPage({super.key});
+  const ProductsOverviewPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +10,7 @@ class ProductsOverviewPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Minha Loja'),
       ),
-      body: ProductGrid(),
+      body: const ProductGrid(),
     );
   }
 }

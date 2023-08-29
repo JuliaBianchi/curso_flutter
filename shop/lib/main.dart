@@ -6,10 +6,11 @@ import 'package:provider/provider.dart';
 import 'package:shop/utils/app_routes.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   // This widget is the root of your application.
   @override
@@ -24,9 +25,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Lato',
 
         ),
-        home: ProductsOverviewPage(),
+        home: const ProductsOverviewPage(),
         routes: {
-          AppRoutes.PRODUCT_DETAIL: (ctx) => ProductDetailPage(),
+          AppRoutes.PRODUCT_DETAIL: (ctx) => const ProductDetailPage(),
         },
         debugShowCheckedModeBanner: false,
       ),
