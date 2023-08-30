@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shop/components/Badgee.dart';
+import 'package:shop/components/app_drawer.dart';
 import 'package:shop/models/cart.dart';
 import 'package:shop/models/product_list.dart';
 import 'package:shop/utils/app_routes.dart';
@@ -16,6 +17,7 @@ class ProductsOverviewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _showFavoriteOnly = false;
     final provider = Provider.of<ProductList>(context);
 
     return Scaffold(
@@ -46,7 +48,7 @@ class ProductsOverviewPage extends StatelessWidget {
           Consumer<Cart>(
             child: IconButton(
               onPressed: () {
-                Navigator.of(context).pushNamed(AppRoutes.CART);
+                Navigator.of(context).pushNamed(AppRoutes.cart);
               },
               icon: const Icon(Icons.shopping_cart),
             ),
@@ -59,6 +61,7 @@ class ProductsOverviewPage extends StatelessWidget {
         ],
       ),
       body: const ProductGrid(),
+      drawer: AppDrawer(),
     );
   }
 }

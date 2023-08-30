@@ -1,8 +1,6 @@
 // gerenciar os pedidos, modificar a lista de pedidos
 import 'dart:math';
-
 import 'package:flutter/material.dart';
-
 import 'cart.dart';
 import 'order.dart';
 
@@ -10,7 +8,7 @@ class OrderList with ChangeNotifier {
   List<Order> _items = [];
 
   List<Order> get items {
-    return [...items];
+    return [..._items];
   }
 
   int get itemsCount {
