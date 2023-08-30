@@ -5,7 +5,7 @@ class Badgee extends StatelessWidget {
   final String value;
   final Color? color;
 
-  Badgee({
+  const Badgee({
     super.key,
     required this.child,
     required this.value,
@@ -23,12 +23,12 @@ class Badgee extends StatelessWidget {
           right: 8,
           top: 8,
           child: Container(
-            padding: EdgeInsets.all(2),
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: color ?? Theme.of(context).hintColor,
             ),
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               minWidth: 16,
               minHeight: 16,
             ),
