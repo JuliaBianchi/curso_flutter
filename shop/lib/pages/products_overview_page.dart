@@ -1,48 +1,51 @@
 import 'package:flutter/material.dart';
-import 'package:shop/components/Badgee.dart';
-import 'package:shop/components/app_drawer.dart';
-import 'package:shop/models/cart.dart';
-import 'package:shop/models/product_list.dart';
-import 'package:shop/utils/app_routes.dart';
-import '../components/product_grid.dart';
 import 'package:provider/provider.dart';
+import 'package:shop/components/app_drawer.dart';
+import 'package:shop/components/product_grid.dart';
+import 'package:shop/models/cart.dart';
+import 'package:shop/utils/app_routes.dart';
 
 enum FilterOptions {
-  Favorite,
-  All,
+  favorite,
+  all,
 }
 
-class ProductsOverviewPage extends StatelessWidget {
-  const ProductsOverviewPage({super.key});
+class ProductsOverviewPage extends StatefulWidget {
+  const ProductsOverviewPage({Key? key}) : super(key: key);
+
+  @override
+  State<ProductsOverviewPage> createState() => _ProductsOverviewPageState();
+}
+
+class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
+  bool _showFavoriteOnly = false;
 
   @override
   Widget build(BuildContext context) {
-    bool _showFavoriteOnly = false;
-    final provider = Provider.of<ProductList>(context);
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Minha Loja'),
         actions: [
           PopupMenuButton(
             icon: const Icon(Icons.more_vert),
-            itemBuilder: (_) =>
-            [
+            itemBuilder: (_) => [
               const PopupMenuItem(
-                value: FilterOptions.Favorite,
-                child: Text('Favoritos'),
+                value: FilterOptions.favorite,
+                child: Text('Somente Favoritos'),
               ),
               const PopupMenuItem(
-                value: FilterOptions.All,
+                value: FilterOptions.all,
                 child: Text('Todos'),
               ),
             ],
             onSelected: (FilterOptions selectedValue) {
-              if (selectedValue == FilterOptions.Favorite) {
-                provider.showFavoriteOnly();
-              } else {
-                provider.showAll();
-              }
+              setState(() {
+                if (selectedValue == FilterOptions.favorite) {
+                  _showFavoriteOnly = true;
+                } else {
+                  _showFavoriteOnly = false;
+                }
+              });
             },
           ),
           Consumer<Cart>(
@@ -52,16 +55,15 @@ class ProductsOverviewPage extends StatelessWidget {
               },
               icon: const Icon(Icons.shopping_cart),
             ),
-            builder: (ctx, cart, child) =>
-                Badgee(
-                    value: cart.itemsCount.toString(),
-                    child: child!,
-                ),
+            builder: (ctx, cart, child) => Badge(
+              label: Text(cart.itemsCount.toString()),
+              child: child!,
+            ),
           ),
         ],
       ),
-      body: const ProductGrid(),
-      drawer: AppDrawer(),
+      body: ProductGrid(_showFavoriteOnly),
+      drawer: const AppDrawer(),
     );
   }
 }

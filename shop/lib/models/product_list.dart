@@ -6,23 +6,13 @@ class ProductList with ChangeNotifier{ // mixin
 
   final List<Product> _items = dummy_products;
 
-  List<Product> get items {
-    if(_showFavoriteOnly) {
-      return _items.where((prod) => prod.isFavorite).toList();
-    }
-    return [..._items]; // fazer um clone da lista
-  }
+  List<Product> get items =>  [..._items]; // fazer um clone da lista
 
-  bool _showFavoriteOnly = false;
+  List<Product> get favoriteItems =>
+      _items.where((prod) => prod.isFavorite).toList();
 
-  void showFavoriteOnly(){
-    _showFavoriteOnly = true;
-    notifyListeners();
-  }
-
-  void showAll(){
-    _showFavoriteOnly = false;
-    notifyListeners();
+  int get itemsCount {
+    return _items.length;
   }
 
   void addProduct(Product product){
