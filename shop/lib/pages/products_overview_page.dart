@@ -27,14 +27,14 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
   @override
   void initState() {
     super.initState();
-    Provider.of<ProductList>(
-      context,
-      listen: false,
-    ).loadProducts().then((value) {
+    // Provider.of<ProductList>(
+    //   context,
+    //   listen: false,
+    // ).loadProducts().then((value) {
       setState(() {
         _isLoading = false;
       });
-    });
+    //});
   }
 
   @override
@@ -79,12 +79,11 @@ class _ProductsOverviewPageState extends State<ProductsOverviewPage> {
           ),
         ],
       ),
-      body: _isLoading
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : ProductGrid(_showFavoriteOnly),
+      body: _isLoading ? const Center(child: CircularProgressIndicator()) : ProductGrid(_showFavoriteOnly),
+
       drawer: const AppDrawer(),
+
+
     );
   }
 }
