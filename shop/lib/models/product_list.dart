@@ -23,7 +23,7 @@ class ProductList with ChangeNotifier {
 
   Future<void> loadProducts() async {
     _items.clear();
-    final response = await http.get(Uri.parse('${Constants.PRODUCT_BASE_URL}.json'));
+    final response = await http.get(Uri.parse('${Constants.product_base_url}.json'));
 
     if (response.body == 'null') return;
     Map<String, dynamic> data = jsonDecode(response.body);
@@ -62,7 +62,7 @@ class ProductList with ChangeNotifier {
 
   Future<void> addProduct(Product product) async {
     final response = await http.post(
-      Uri.parse('${Constants.PRODUCT_BASE_URL}.json'),
+      Uri.parse('${Constants.product_base_url}.json'),
       body: jsonEncode(
         {
           "name": product.name,
@@ -122,7 +122,7 @@ class ProductList with ChangeNotifier {
 
       // mando pro servidor
       final response = await http.delete(
-        Uri.parse('${Constants.PRODUCT_BASE_URL}/${product.id}.json'),
+        Uri.parse('${Constants.product_base_url}/${product.id}.json'),
       );
 
       // resposta do servidor - se for >= 400 vai inserir o produto de volta
