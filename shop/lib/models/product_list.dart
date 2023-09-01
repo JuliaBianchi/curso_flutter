@@ -23,7 +23,7 @@ class ProductList with ChangeNotifier {
 
   Future<void> loadProducts() async {
     _items.clear();
-    final response = await http.get(Uri.parse('$Constants.PRODUCT_BASE_URL.json'));
+    final response = await http.get(Uri.parse('${Constants.PRODUCT_BASE_URL}.json'));
 
     if (response.body == 'null') return;
     Map<String, dynamic> data = jsonDecode(response.body);
@@ -101,7 +101,6 @@ class ProductList with ChangeNotifier {
             "description": product.description,
             "price": product.price,
             "imageUrl": product.imageUrl,
-            "isFavorite": product.isFavorite,
           },
         ),
       );
@@ -109,8 +108,6 @@ class ProductList with ChangeNotifier {
       _items[index] = product;
       notifyListeners();
     }
-
-    return Future.value();
   }
 
   Future<void> deleteProduct(Product product) async {
