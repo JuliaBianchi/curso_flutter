@@ -6,6 +6,15 @@
       <excludeFolder url="file://$MODULE_DIR$/projeto_perguntas/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/projeto_perguntas/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/projeto_perguntas/build" />
+      <excludeFolder url="file://$MODULE_DIR$/expenses/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/expenses/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/expenses/build" />
+      <excludeFolder url="file://$MODULE_DIR$/meals/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/meals/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/meals/build" />
+      <excludeFolder url="file://$MODULE_DIR$/shop/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/shop/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/shop/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

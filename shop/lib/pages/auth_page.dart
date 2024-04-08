@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget {
       body: Stack(
         children: [
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [
                   Color.fromRGBO(215, 117, 255, 0.5),
@@ -31,6 +31,9 @@ class AuthPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
+                  margin: const EdgeInsets.only(
+                    bottom: 20,
+                  ),
                   padding: const EdgeInsets.symmetric(
                     horizontal: 70,
                     vertical: 10,
@@ -56,7 +59,7 @@ class AuthPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                AuthForm(),
+                const AuthForm(),
 
               ],
             ),
