@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 class InputTimeComponent extends StatelessWidget {
   final String title;
   final int value;
+  final void Function()? increment;
+  final void Function()? decrement;
 
   const InputTimeComponent({
     super.key,
     required this.title,
     required this.value,
+    this.increment,
+    this.decrement,
   });
 
   @override
@@ -21,7 +25,7 @@ class InputTimeComponent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: () {},
+              onPressed: decrement,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15.0),
@@ -38,7 +42,7 @@ class InputTimeComponent extends StatelessWidget {
               style: const TextStyle(fontSize: 18),
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: increment,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15.0),
