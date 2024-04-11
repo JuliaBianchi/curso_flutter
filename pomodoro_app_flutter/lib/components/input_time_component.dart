@@ -19,7 +19,7 @@ class InputTimeComponent extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text(title, style: const TextStyle(fontSize: 25),),
+        Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
         const SizedBox(height: 10),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -28,14 +28,19 @@ class InputTimeComponent extends StatelessWidget {
               onPressed: decrement,
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
-                padding: const EdgeInsets.all(15.0),
-                backgroundColor: Colors.redAccent.shade200
+                padding: const EdgeInsets.all(10.0),
+                backgroundColor: Colors.black,
               ),
-              child: const Icon(
-                Icons.arrow_downward,
-                color: Colors.white,
-                size: 25,
+              child: const Padding(
+                padding: EdgeInsets.only(bottom: 10),
+                child: Icon(
+                  Icons.minimize,
+                  color: Colors.white,
+                  size: 25,
+
+                ),
               ),
+
             ),
             Text(
               '$value min',
@@ -46,10 +51,10 @@ class InputTimeComponent extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: const CircleBorder(),
                 padding: const EdgeInsets.all(15.0),
-                backgroundColor: Colors.redAccent.shade200
+                backgroundColor: Colors.black,
               ),
               child: const Icon(
-                Icons.arrow_upward,
+                Icons.add,
                 color: Colors.white,
                 size: 25,
               ),
