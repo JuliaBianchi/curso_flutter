@@ -18,13 +18,9 @@ class MyApp extends StatelessWidget {
           create: (_) => PomodoroStore(),
         )
       ],
-      child: MaterialApp(
+      child: const MaterialApp(
         title: 'Pomodoro App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
         home: PomodoroPage(),
       ),
     );

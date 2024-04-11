@@ -18,15 +18,33 @@ class PomodoroPage extends StatelessWidget {
         // esticar no eixo cruzado,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          Expanded(child: StopwatchComponent()),
+          const Expanded(child: StopwatchComponent()),
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 40),
+            padding: const EdgeInsets.symmetric(vertical: 40),
             child: Observer(
               builder: (_) => Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: [
-                  InputTimeComponent(title: 'Trabalho', value: store.workTime, increment: store.incrementWorkTime, decrement: store.decrementWorkTime),
-                  InputTimeComponent(title: 'Descanso', value: store.timeOff, increment: store.incrementTimeOff, decrement: store.decrementTimeOff),
+                  InputTimeComponent(
+                      title: 'FOCUS',
+                      value: store.workTime,
+                      increment: store.started && store.isWorking()
+                          ? null
+                          : store.incrementWorkTime,
+                      decrement: store.started && store.isWorking()
+                          ? null
+                          : store.decrementWorkTime,
+                  ),
+                  InputTimeComponent(
+                      title: 'BREAK',
+                      value: store.timeOff,
+                      increment: store.started && store.isTimeOff()
+                          ? null
+                          : store.incrementTimeOff,
+                      decrement: store.started && store.isTimeOff()
+                          ? null
+                          : store.decrementTimeOff
+                  ),
                 ],
               ),
             ),
