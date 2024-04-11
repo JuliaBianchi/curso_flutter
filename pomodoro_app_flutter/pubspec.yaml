@@ -41,6 +41,8 @@ dependencies:
   flutter_mobx: ^2.2.1+1
   custom_radio_group_list: ^1.1.2
   google_fonts: ^6.2.1
+  flutter_native_splash: ^2.4.0
+
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +55,22 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^3.0.0
   build_runner: ^2.4.9
+
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "dev_assets/icon.png"
+  remove_alpha_ios: true
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "dev_assets/icon.png"
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: "dev_assets/splash.png"
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
